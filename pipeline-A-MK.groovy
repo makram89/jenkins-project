@@ -17,12 +17,11 @@ pipeline {
 
     post{
         failure {
-            stage("Trigger job") {
-                steps {
+            
                     build job: 'pipeline-B-MK', parameters: [string(name: 'env', value: params.env)]
             
                 }
-            }
+            
         }
     }   
 }
