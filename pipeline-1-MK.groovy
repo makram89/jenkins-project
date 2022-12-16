@@ -7,8 +7,8 @@ pipeline {
 
     stages{
         stage('Stage 1'){
-            when{
-                return params.env == "demo"
+            when {
+                expression { params.env == "demo" }
 
             }
             steps{
