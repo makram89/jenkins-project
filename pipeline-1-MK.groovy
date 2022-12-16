@@ -1,11 +1,33 @@
 pipeline {
     agent any
+    
+    parameters {
+        choice( choices: ['demo', 'prod'], description: '', name: 'env')
+    }
+
     stages{
-        stage('test'){
+        stage('Stage 1'){
+            when{
+                return params.env == "demo"
+
+            }
             steps{
-                echo 'Its alive'
+                echo "Deployment 1 on $params.env"
             }
         }
+
+        stage('Stage 2'){
+            steps{
+                script{
+                     if ( params.environment == "demo")
+                     {
+                         echo "Deployment 2 on $params.env"
+                     } 
+                }
+               
+            }
+        }
+        
     }
 
 }
