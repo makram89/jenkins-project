@@ -3,7 +3,7 @@ pipeline{
     {
         node 'slave01'
     }
-    steges{
+    stages{
         stage("Pull image 1")
         {
             steps{
