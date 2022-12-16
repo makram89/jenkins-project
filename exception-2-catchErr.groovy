@@ -18,10 +18,14 @@ pipeline{
          stage("Pull image 2")
         {
             steps{
+                script{ 
+
+                
                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE' ) {
                         def image = docker.image("python:3.6.1111-alpine")
                         image.pull()
                     }
+                }
                 }
             }
             
